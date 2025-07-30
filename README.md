@@ -4,5 +4,5 @@ Internship project by:
 Antarlina Bhadra
 Sudipta Saha
 Supratim Lodh
-Subhajit Sarkar
+Subhajit Saha
 Alfaz Choudhury
