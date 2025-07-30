@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Password Strength Checker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+<nav class="navbar">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/about">About Us</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+</nav>
+
+<h2>Random Password Generator and Strength Checker</h2>
+
+<div class="wrapper">
+  <div class="container">
+    <h1>Password Strength Checker</h1>
+
+    <label for="password">Enter Password:</label>
+    <input type="password" id="password" placeholder="Type your password">
+
+    <label><input type="checkbox" id="show-password" onclick="togglePassword()"> Show Password</label>
+
+    <div id="strength-text"></div>
+    <div id="strength-bar"></div>
+
+    <button onclick="checkPassword()">Check Strength</button>
+    <button onclick="generatePassword()">Generate Strong Password</button>
+    <button onclick="analyzePassword()">Analyze Composition</button>
+    <button onclick="copypassword()">Copy Password</button>
+
+    <div id="composition-result"></div>
+
+    <div class="options">
+      <label for="length">Length:
+        <input type="number" id="length" value="12" min="6" max="32">
+      </label>
+    </div>
+
+    <div class="options">
+      <label><input type="checkbox" id="include-uppercase" checked> Uppercase</label>
+      <label><input type="checkbox" id="include-lowercase" checked> Lowercase</label>
+      <label><input type="checkbox" id="include-numbers" checked> Numbers</label>
+      <label><input type="checkbox" id="include-symbols" checked> Symbols</label>
+    </div>
+
+  </div>
+</div>
+
+<style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #1e1e2f, #0d0d0d);
+      padding: 120px 20px 50px;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(30, 30, 30, 0.9);
+      backdrop-filter: blur(8px);
+      padding: 15px 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(255, 0, 204, 0.2);
+      border-bottom: 1px solid #444;
+    }
+
+    .navbar ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+    }
+
+    .navbar li {
+      margin: 0 25px;
+    }
+
+    .navbar a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
+
+    .navbar a:hover {
+      color: #ff00cc;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-weight: 600;
+      font-size: 26px;
+      color: #ffffff;
+    }
+
+    .wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 700px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 30px 40px;
+      box-shadow: 0 0 25px rgba(255, 0, 204, 0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #ff00cc;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 600;
+    }
+
+    input[type="password"],
+    input[type="number"] {
+      width: 100%;
+      padding: 12px;
+      margin-top: 8px;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+      background: rgba(255, 255, 255, 0.07);
+      color: #fff;
+    }
+
+    input[type="number"]::-webkit-inner-spin-button {
+      display: none;
+    }
+
+    input[type="checkbox"] {
+      margin-right: 8px;
+    }
+
+    .options {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .options label {
+      flex: 1 1 45%;
+      font-weight: 500;
+      color: #ddd;
+    }
+
+    button {
+      padding: 12px 20px;
+      margin: 10px 5px 0 0;
+      font-size: 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      background: linear-gradient(135deg, #2d2d2d, #444);
+      color: white;
+      transition: all 0.3s ease;
+      width: calc(50% - 10px);
+    }
+
+    button:hover {
+      background: #ff00cc;
+      color: #fff;
+      box-shadow: 0 0 10px #ff00cc, 0 0 20px rgba(255, 0, 204, 0.5);
+    }
+
+    #strength-bar {
+      height: 10px;
+      border-radius: 5px;
+      margin: 15px 0;
+      background: #cc0808;
+      transition: all 0.3s ease;
+      width: 0;
+    }
+
+    #strength-text {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    #composition-result {
+      margin-top: 15px;
+      font-weight: bold;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 10px;
+      border-radius: 8px;
+      color: #f2f2f2;
+    }
+
+    @media (max-width: 600px) {
+      button {
+        width: 100%;
+      }
+
+      .options label {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+
+<script>
+    // Function to check password strength
+    function checkPassword() {
+      const password = document.getElementById('password').value;
+
+      fetch('/check_strength', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ password: password }),
+      })
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('strength-text').innerText = data.strength;
+        document.getElementById('strength-bar').style.backgroundColor = data.color;
+        document.getElementById('strength-bar').style.width = data.width + '%';
+      })
+      .catch(error => console.error('Error:', error));
+    }
+
+    // Function to generate a strong password
+    function generatePassword() {
+      const length = 12; // Default length
+
+      const includeUppercase = document.getElementById('include-uppercase').checked;
+      const includeLowercase = document.getElementById('include-lowercase').checked;
+      const includeNumbers = document.getElementById('include-numbers').checked;
+      const includeSymbols = document.getElementById('include-symbols').checked;
+
+
+      fetch('/generate_password', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ 
+          length: length, 
+        uppercase: includeUppercase,
+      lowercase: includeLowercase,
+      numbers: includeNumbers,
+      symbols: includeSymbols
+    }),
+      })
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('password').value = data.password;
+        checkPassword();  // Automatically check strength after generating
+      })
+      .catch(error => console.error('Error:', error));
+    }
+    // Funtion to analyze the composition of password
+    function analyzePassword() {
+    const password = document.getElementById('password').value;
+
+    fetch('/analyze_password', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ password: password }),
+    })
+    .then(response => response.json())
+    .then(data => {
+      const resultDiv = document.getElementById('composition-result');
+      resultDiv.innerHTML = `
+        Uppercase: ${data.uppercase} <br>
+        Lowercase: ${data.lowercase} <br>
+        Digits: ${data.digits} <br>
+        Special Characters: ${data.special}
+      `;
+    })
+    .catch(error => console.error('Error:', error));
+  }
+
+// Function to toggle password visibility
+  function togglePassword() {
+  const passwordField = document.getElementById("password");
+  const showCheckbox = document.getElementById("show-password");
+
+  if (showCheckbox.checked) {
+    passwordField.type = "text";
+  } else {
+    passwordField.type = "password";
+  }
+}
+
+// Function to copy password to clipboard
+  function copypassword() {
+  const passwordField = document.getElementById("password");
+  if (passwordField.value) {
+    navigator.clipboard.writeText(passwordField.value)
+      .then(() => {
+        alert("Password copied to clipboard!");
+      })
+      .catch(err => {
+        console.error("Failed to copy password: ", err);
+      });
+  } else {
+    alert("No password to copy!");
+  }
+}
+  </script>
+</body>
+</html>

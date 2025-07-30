@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>About | Password Strength Checker</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+    * {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+    }
+
+    body {
+font-family: 'Inter', sans-serif;
+background: linear-gradient(135deg, #1e1e2f, #0d0d0d);
+color: white;
+padding-top: 100px;
+    }
+
+    .navbar {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+background: rgba(30, 30, 30, 0.9);
+backdrop-filter: blur(8px);
+padding: 15px 0;
+z-index: 1000;
+box-shadow: 0 2px 10px rgba(255, 0, 204, 0.2);
+border-bottom: 1px solid #444;
+    }
+
+    .navbar ul {
+display: flex;
+justify-content: center;
+list-style: none;
+    }
+
+    .navbar li {
+margin: 0 25px;
+    }
+
+    .navbar a {
+color: #fff;
+text-decoration: none;
+font-weight: bold;
+font-size: 18px;
+transition: color 0.3s ease;
+    }
+
+    .navbar a:hover {
+color: #ff00cc;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 16px;
+      padding: 40px 30px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 0 30px rgba(255, 0, 204, 0.15);
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #ff00cc;
+    }
+
+    h2 {
+      font-size: 1.7rem;
+      color: #ff00cc;
+      margin-top: 30px;
+      margin-bottom: 10px;
+      border-left: 4px solid #ff00cc;
+      padding-left: 10px;
+    }
+
+    p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #ddd;
+      margin-bottom: 15px;
+    }
+
+    ul.feature-list {
+      margin-top: 10px;
+      padding-left: 20px;
+      list-style: none;
+    }
+
+    ul.feature-list li::before {
+      content: "✓";
+      color: #ff00cc;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    ul.feature-list li {
+      margin-bottom: 10px;
+      color: #ccc;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      color: #aaa;
+      font-size: 0.9rem;
+      padding-bottom: 30px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 30px 20px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      h2 {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About Us</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+    <h1>About This Tool</h1>
+
+    <h2>Overview</h2>
+    <p>
+The <strong>Random Password Generator & Strength Checker</strong> is a secure, client-focused web application designed to help users assess the strength of their passwords and create highly secure, random passwords based on custom preferences.
+    </p>
+    <p>
+In an era where data breaches and cyber threats are increasing, creating a strong and unique password is crucial. Our tool ensures users generate passwords that are tough to crack and understand how secure their current passwords really are.
+    </p>
+
+    <h2>How It Works</h2>
+    <p>
+This application performs real-time password analysis using modern front-end logic and communicates securely with backend APIs (if available) to evaluate strength and composition. All logic related to strength checking, generation, and composition runs securely in the browser or backend without storing any user input.
+    </p>
+    <ul class="feature-list">
+<li><strong>Password Strength Evaluation</strong>: Rates password strength as Weak, Moderate, or Strong based on length and complexity.</li>
+<li><strong>Real-Time Feedback</strong>: Instantly updates the visual strength bar and message.</li>
+<li><strong>Visual Analysis</strong>: Shows detailed breakdown of characters—uppercase, lowercase, numbers, and symbols.</li>
+    </ul>
+
+    <h2>Features</h2>
+    <ul class="feature-list">
+<li>🛡 Secure client-side password evaluation.</li>
+<li>🧠 Intelligent feedback on password strength.</li>
+<li>🔐 Random password generator with customizable options.</li>
+<li>📋 Copy password to clipboard with one click.</li>
+<li>📊 Analyze character composition of passwords.</li>
+<li>🎨 Beautiful UI with modern glassmorphism design.</li>
+<li>🔁 Responsive layout for desktop and mobile.</li>
+    </ul>
+
+    <footer>
+&copy; 2025 Random Password Generator & Strength Checker. Built with care by passionate developers.
+    </footer>
+</div>
+
+</body>
+</html>

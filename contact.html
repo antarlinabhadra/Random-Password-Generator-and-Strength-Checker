@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact | Random Password Generator & Strength Checker</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #1e1e2f, #0d0d0d);
+      color: #fff;
+      padding: 120px 20px 60px;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+      padding: 50px 40px;
+      box-shadow: 0 0 25px rgba(255, 0, 204, 0.15);
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #ff00cc;
+    }
+
+    p.intro {
+      text-align: center;
+      font-size: 1.1rem;
+      margin-bottom: 40px;
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    .form-section {
+      margin-top: 30px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-group {
+      position: relative;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 15px 20px 15px 50px;
+      border: none;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.07);
+      color: #fff;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .form-group i {
+      position: absolute;
+      top: 50%;
+      left: 15px;
+      transform: translateY(-50%);
+      color: #ff00cc;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    button {
+      padding: 15px;
+      background: linear-gradient(135deg, #2d2d2d, #444);
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #ff00cc;
+      color: #fff;
+      box-shadow: 0 0 10px #ff00cc, 0 0 20px rgba(255, 0, 204, 0.5);
+    }
+
+    .credits-section {
+      margin-top: 50px;
+    }
+
+    .credits-section h2 {
+      text-align: center;
+      color: #ff00cc;
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+    }
+
+    .credits-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 15px;
+      list-style: none;
+      padding: 0;
+    }
+
+    .credits-list li {
+      background: rgba(255, 255, 255, 0.07);
+      padding: 15px 20px;
+      border-left: 4px solid #ff00cc;
+      border-radius: 10px;
+      font-size: 1rem;
+      color: #ddd;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      .container {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Contact Us</h1>
+    <p class="intro">
+      We are a team of developers passionate about cybersecurity and digital privacy.
+      This Password Strength Checker is built to help users evaluate the strength of their passwords and generate secure alternatives using advanced logic — without storing any of your data.
+    </p>
+
+    <div class="form-section">
+      <form action="#" method="POST">
+        <div class="form-group">
+          <i class="fas fa-user"></i>
+          <input type="text" name="name" placeholder="Your Name" required />
+        </div>
+        <div class="form-group">
+          <i class="fas fa-envelope"></i>
+          <input type="email" name="email" placeholder="Your Email" required />
+        </div>
+        <div class="form-group">
+          <i class="fas fa-comment-dots"></i>
+          <textarea name="message" placeholder="Your Message" required></textarea>
+        </div>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+
+    <div class="credits-section">
+      <h2>Meet the Team</h2>
+      <ul class="credits-list">
+        <li>Antarlina Bhadra - CST, 3rd Year Diploma (TIT)</li>
+        <li>Sudipta Saha - CST, 3rd Year Diploma (TIT)</li>
+        <li>Alfaz Choudhury - CST, 3rd Year Diploma (TIT)</li>
+        <li>Subhajit Saha - CST, 3rd Year Diploma (TIT)</li>
+        <li>Supratim Lodh - CST, 3rd Year Diploma (TIT)</li>
+      </ul>
+    </div>
+
+    <footer>
+      &copy; 2025 Random Password Generator & Strength Checker. All rights reserved.
+    </footer>
+  </div>
+
+</body>
+</html>
